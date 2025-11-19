@@ -1,0 +1,15 @@
+name = "smart-resume"
+compatibility_date = "2024-07-01"
+
+[build]
+command = "npx @cloudflare/next-on-pages"
+cwd = "."
+
+[vars]
+# Set these via `wrangler secret put` or the Cloudflare dashboard.
+GPT_API_URL = "https://api.openai.com/v1/chat/completions"
+GPT_MODEL = "gpt-4o-mini"
+STRIPE_PRO_PRICE_ID = ""
+STRIPE_SECRET_KEY = ""
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY = ""
+NEXT_PUBLIC_APP_URL = "https://smart-resume.pages.dev"
