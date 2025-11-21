@@ -42,6 +42,15 @@
       <label class="stacked">Summary<textarea id="summaryInput" rows="4" placeholder="Two to three sentences that capture your value." ></textarea></label>
 
       <div class="section-header">
+        <h3>Sections</h3>
+        <div class="actions">
+          <button id="addCustomSectionBtn" class="ghost">+ Add section</button>
+        </div>
+      </div>
+
+      <div id="sectionOrder" class="section-list"></div>
+
+      <div class="section-header">
         <h3>Experience</h3>
         <div class="actions">
           <button id="addExperienceBtn" class="ghost">+ Add experience</button>
@@ -58,6 +67,8 @@
       <div id="educationList" class="card-list"></div>
 
       <label class="stacked">Skills (comma separated)<input type="text" id="skillsInput" placeholder="Figma, UX research, Prototyping" /></label>
+
+      <div id="customSections" class="card-list"></div>
 
       <div class="section-footer">
         <button id="resetBtn" class="ghost">Load sample</button>
@@ -81,25 +92,7 @@
           </div>
         </header>
 
-        <section class="resume-section">
-          <div class="section-title"><span>Summary</span></div>
-          <p id="previewSummary" class="centered">I craft thoughtful product experiences that balance business goals with human impact.</p>
-        </section>
-
-        <section class="resume-section">
-          <div class="section-title"><span>Experience</span><span class="count" id="previewExperienceCount">2 roles</span></div>
-          <div id="previewExperience" class="experience"></div>
-        </section>
-
-        <section class="resume-section">
-          <div class="section-title"><span>Education</span></div>
-          <div id="previewEducation" class="experience"></div>
-        </section>
-
-        <section class="resume-section">
-          <div class="section-title"><span>Skills</span></div>
-          <div id="previewSkills" class="skill-line"></div>
-        </section>
+        <div id="previewSections"></div>
       </div>
     </section>
   </main>
