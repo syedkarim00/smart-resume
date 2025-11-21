@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Resume Builder</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">BetterCV-inspired</p>
+      <h1>Smart Resume Builder</h1>
+      <p class="subhead">Craft polished resumes with live preview, templates, and quick export.</p>
+    </div>
+    <div class="header-actions">
+      <label class="switch">
+        <input type="checkbox" id="themeToggle" />
+        <span class="slider"></span>
+        <span class="switch-label">Dark mode</span>
+      </label>
+      <button id="downloadBtn" class="primary">Export as PDF</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel form-panel">
+      <div class="section-header">
+        <h2>Resume details</h2>
+        <div class="chip">Autosaves locally</div>
+      </div>
+
+      <div class="input-grid">
+        <label>Full name<input type="text" id="nameInput" placeholder="Alex Taylor" /></label>
+        <label>Headline<input type="text" id="headlineInput" placeholder="Product Designer" /></label>
+        <label>Email<input type="email" id="emailInput" placeholder="alex.taylor@email.com" /></label>
+        <label>Phone<input type="tel" id="phoneInput" placeholder="(555) 555-5555" /></label>
+        <label>Location<input type="text" id="locationInput" placeholder="Austin, TX" /></label>
+        <label>Website / Portfolio<input type="url" id="websiteInput" placeholder="https://alex.design" /></label>
+      </div>
+
+      <label class="stacked">Summary<textarea id="summaryInput" rows="4" placeholder="Two to three sentences that capture your value." ></textarea></label>
+
+      <div class="section-header">
+        <h3>Experience</h3>
+        <div class="actions">
+          <button id="addExperienceBtn" class="ghost">+ Add experience</button>
+        </div>
+      </div>
+      <div id="experienceList" class="card-list"></div>
+
+      <div class="section-header">
+        <h3>Education</h3>
+        <div class="actions">
+          <button id="addEducationBtn" class="ghost">+ Add education</button>
+        </div>
+      </div>
+      <div id="educationList" class="card-list"></div>
+
+      <label class="stacked">Skills (comma separated)<input type="text" id="skillsInput" placeholder="Figma, UX research, Prototyping" /></label>
+
+      <div class="section-footer">
+        <button id="resetBtn" class="ghost">Load sample</button>
+        <div class="hint">Changes are saved automatically in your browser.</div>
+      </div>
+    </section>
+
+    <section class="panel preview-panel" id="resumePreview">
+      <div class="resume">
+        <header class="resume-header">
+          <div>
+            <h1 id="previewName">Alex Taylor</h1>
+            <p id="previewHeadline" class="muted">Product Designer</p>
+          </div>
+          <div class="contact">
+            <span id="previewEmail">alex.taylor@email.com</span>
+            <span id="previewPhone">(555) 555-5555</span>
+            <span id="previewLocation">Austin, TX</span>
+            <span id="previewWebsite">alex.design</span>
+          </div>
+        </header>
+
+        <section>
+          <h2>Summary</h2>
+          <p id="previewSummary">I craft thoughtful product experiences that balance business goals with human impact.</p>
+        </section>
+
+        <section>
+          <div class="section-heading">
+            <h2>Experience</h2>
+            <div class="pill" id="previewExperienceCount">2 roles</div>
+          </div>
+          <div id="previewExperience"></div>
+        </section>
+
+        <section>
+          <div class="section-heading">
+            <h2>Education</h2>
+          </div>
+          <div id="previewEducation"></div>
+        </section>
+
+        <section>
+          <div class="section-heading">
+            <h2>Skills</h2>
+          </div>
+          <div id="previewSkills" class="pill-row"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
