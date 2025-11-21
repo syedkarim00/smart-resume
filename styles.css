@@ -7,6 +7,10 @@
   --primary: #4f46e5;
   --pill: #eef2ff;
   --shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+  --resume-bg: #ffffff;
+  --resume-text: #0f172a;
+  --resume-muted: #475569;
+  --resume-accent: #1f2937;
 }
 
 :root.dark {
@@ -18,6 +22,10 @@
   --primary: #a5b4fc;
   --pill: #1e293b;
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  --resume-bg: #0f172a;
+  --resume-text: #e2e8f0;
+  --resume-muted: #94a3b8;
+  --resume-accent: #cbd5e1;
 }
 
 * {
@@ -276,18 +284,15 @@ button.ghost {
 }
 
 .resume {
-  background: #fff;
-  color: #0f172a;
-  padding: 32px;
+  background: var(--resume-bg);
+  color: var(--resume-text);
+  padding: 28px 36px 40px;
   border-radius: 12px;
   box-shadow: inset 0 0 0 1px var(--border);
   min-height: 100%;
-}
-
-.resume.dark {
-  background: #0f172a;
-  color: #e2e8f0;
-  box-shadow: inset 0 0 0 1px #1e293b;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: "Georgia", "Times New Roman", serif;
 }
 
 .resume h1,
@@ -295,11 +300,22 @@ button.ghost {
 .resume h3,
 .resume h4 {
   margin: 0;
+  font-weight: 700;
+}
+
+.resume h1 {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 26px;
 }
 
 .resume h2 {
-  margin-bottom: 8px;
-  font-size: 18px;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+}
+
+.resume h3 {
+  font-size: 15px;
 }
 
 .resume p {
@@ -308,67 +324,124 @@ button.ghost {
 }
 
 .resume .muted {
-  color: #475569;
-}
-
-.resume.dark .muted {
-  color: #94a3b8;
+  color: var(--resume-muted);
+  font-style: italic;
 }
 
 .resume-header {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  align-items: center;
-  border-bottom: 1px solid var(--border);
+  text-align: center;
+  border-bottom: 2px solid var(--border);
   padding-bottom: 12px;
+  margin-bottom: 16px;
 }
 
-.contact {
-  display: grid;
-  gap: 4px;
+.contact-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
   font-size: 14px;
-  text-align: right;
+  color: var(--resume-accent);
 }
 
-.timeline {
+.contact-row .divider {
+  color: var(--resume-muted);
+}
+
+.resume-section {
+  margin-top: 16px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--resume-accent);
+  position: relative;
+  font-size: 14px;
+}
+
+.section-title::before,
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.section-title span {
+  white-space: nowrap;
+}
+
+.section-title .count {
+  font-size: 12px;
+  color: var(--resume-muted);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.centered {
+  text-align: center;
+  margin-top: 6px;
+}
+
+.experience {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.timeline-item h3 {
-  margin: 0;
-  font-size: 16px;
+.experience-item {
+  border-bottom: 1px dotted var(--border);
+  padding-bottom: 8px;
 }
 
-.timeline-item .meta {
+.experience-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.experience-header {
   display: flex;
-  gap: 8px;
-  color: var(--muted);
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
 }
 
-.badge {
-  background: rgba(15, 23, 42, 0.05);
-  color: #0f172a;
-  border-radius: 6px;
-  padding: 4px 8px;
-  font-size: 12px;
+.experience-title {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--resume-accent);
 }
 
-.resume.dark .badge {
-  background: rgba(226, 232, 240, 0.12);
-  color: #e2e8f0;
+.experience-meta {
+  color: var(--resume-muted);
+  font-size: 13px;
 }
 
 .list {
-  margin: 8px 0 0 16px;
+  margin: 8px 0 0 18px;
   padding: 0;
   color: inherit;
 }
 
 .list li {
   margin-bottom: 6px;
+}
+
+.skill-line {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--resume-accent);
+  text-align: center;
+}
+
+.skill-line span:not(:last-child)::after {
+  content: " • ";
+  color: var(--resume-muted);
 }
 
 .preview-panel {
@@ -397,7 +470,7 @@ button.ghost {
   body {
     background: #fff;
   }
-  .app-header, .form-panel {
+  .app-header, .form-panel, .header-actions {
     display: none;
   }
   .preview-panel {
@@ -409,5 +482,8 @@ button.ghost {
   }
   .resume {
     box-shadow: none;
+    max-width: 7.6in;
+    padding: 24px 28px 32px;
   }
+  @page { margin: 0.4in; }
 }

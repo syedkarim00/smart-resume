@@ -1,4 +1,5 @@
 const STORAGE_KEY = "smart-resume-data";
+const THEME_KEY = "smart-resume-theme";
 
 const sampleData = {
   name: "Alex Taylor",
@@ -121,15 +122,13 @@ function renderPreview() {
   expContainer.innerHTML = "";
   state.experience.forEach((item) => {
     const el = document.createElement("div");
-    el.className = "timeline-item";
+    el.className = "experience-item";
     el.innerHTML = `
-      <h3>${item.role} @ ${item.company}</h3>
-      <div class="meta">
-        <span class="badge">${item.start} – ${item.end}</span>
+      <div class="experience-header">
+        <div class="experience-title">${item.role} – ${item.company}</div>
+        <div class="experience-meta">${item.start} – ${item.end}</div>
       </div>
-      <ul class="list">
-        ${item.highlights.map((h) => `<li>${h}</li>`).join("")}
-      </ul>
+      <ul class="list">${item.highlights.map((h) => `<li>${h}</li>`).join("")}</ul>
     `;
     expContainer.appendChild(el);
   });
@@ -141,11 +140,13 @@ function renderPreview() {
   eduContainer.innerHTML = "";
   state.education.forEach((item) => {
     const el = document.createElement("div");
-    el.className = "timeline-item";
+    el.className = "experience-item";
     el.innerHTML = `
-      <h3>${item.school}</h3>
-      <div class="meta">${item.degree} • ${item.year}</div>
-      <p class="muted">${item.extras || ""}</p>
+      <div class="experience-header">
+        <div class="experience-title">${item.school}</div>
+        <div class="experience-meta">${item.year}</div>
+      </div>
+      <p class="muted">${item.degree}${item.extras ? ` • ${item.extras}` : ""}</p>
     `;
     eduContainer.appendChild(el);
   });
@@ -153,10 +154,9 @@ function renderPreview() {
   const skills = document.getElementById("previewSkills");
   skills.innerHTML = "";
   state.skills.forEach((skill) => {
-    const pill = document.createElement("span");
-    pill.className = "pill";
-    pill.textContent = skill;
-    skills.appendChild(pill);
+    const span = document.createElement("span");
+    span.textContent = skill;
+    skills.appendChild(span);
   });
 }
 
@@ -271,11 +271,21 @@ function wireEducationHandlers() {
 
 function wireThemeToggle() {
   const toggle = document.getElementById("themeToggle");
-  toggle.checked = document.documentElement.classList.contains("dark");
+  const savedTheme = localStorage.getItem(THEME_KEY) || "light";
+  applyTheme(savedTheme);
+  toggle.checked = savedTheme === "dark";
   toggle.addEventListener("change", () => {
-    document.documentElement.classList.toggle("dark");
-    document.getElementById("resumePreview").querySelector(".resume").classList.toggle("dark");
+    applyTheme(toggle.checked ? "dark" : "light");
   });
+}
+
+function applyTheme(mode) {
+  if (mode === "dark") {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+  localStorage.setItem(THEME_KEY, mode);
 }
 
 function wireDownload() {

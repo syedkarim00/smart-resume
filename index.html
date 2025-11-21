@@ -68,43 +68,37 @@
     <section class="panel preview-panel" id="resumePreview">
       <div class="resume">
         <header class="resume-header">
-          <div>
-            <h1 id="previewName">Alex Taylor</h1>
-            <p id="previewHeadline" class="muted">Product Designer</p>
-          </div>
-          <div class="contact">
-            <span id="previewEmail">alex.taylor@email.com</span>
-            <span id="previewPhone">(555) 555-5555</span>
+          <h1 id="previewName">Alex Taylor</h1>
+          <p id="previewHeadline" class="muted">Product Designer</p>
+          <div class="contact-row">
             <span id="previewLocation">Austin, TX</span>
+            <span class="divider">•</span>
+            <span id="previewPhone">(555) 555-5555</span>
+            <span class="divider">•</span>
+            <span id="previewEmail">alex.taylor@email.com</span>
+            <span class="divider">•</span>
             <span id="previewWebsite">alex.design</span>
           </div>
         </header>
 
-        <section>
-          <h2>Summary</h2>
-          <p id="previewSummary">I craft thoughtful product experiences that balance business goals with human impact.</p>
+        <section class="resume-section">
+          <div class="section-title"><span>Summary</span></div>
+          <p id="previewSummary" class="centered">I craft thoughtful product experiences that balance business goals with human impact.</p>
         </section>
 
-        <section>
-          <div class="section-heading">
-            <h2>Experience</h2>
-            <div class="pill" id="previewExperienceCount">2 roles</div>
-          </div>
-          <div id="previewExperience"></div>
+        <section class="resume-section">
+          <div class="section-title"><span>Experience</span><span class="count" id="previewExperienceCount">2 roles</span></div>
+          <div id="previewExperience" class="experience"></div>
         </section>
 
-        <section>
-          <div class="section-heading">
-            <h2>Education</h2>
-          </div>
-          <div id="previewEducation"></div>
+        <section class="resume-section">
+          <div class="section-title"><span>Education</span></div>
+          <div id="previewEducation" class="experience"></div>
         </section>
 
-        <section>
-          <div class="section-heading">
-            <h2>Skills</h2>
-          </div>
-          <div id="previewSkills" class="pill-row"></div>
+        <section class="resume-section">
+          <div class="section-title"><span>Skills</span></div>
+          <div id="previewSkills" class="skill-line"></div>
         </section>
       </div>
     </section>
